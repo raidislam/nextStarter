@@ -1,5 +1,6 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from 'react';
 import styles from '../styles/Home.module.css'
 import GetProperty from './components/GetProperty/GetProperty';
 import PageTitle from './components/PageTitle/PageTitle'
@@ -19,14 +20,13 @@ export const getStaticProps =  async ()=>{
 }
 
 export default function Home({result}) {
+  const[data , setData] = useState(result)
   return (
    <>
      <div className={styles.container}>
       {PageTitle('Home')}
     </div>
-   <Property/> 
-   <ShowProperty/>
-   <GetProperty result={result}/>
+   <Property data={data} setData={setData}/> 
    </>
   )
 }

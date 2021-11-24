@@ -1,10 +1,13 @@
 import React from 'react'
+import ShowProperty from '../ShowProperty/ShowProperty'
 
-const GetProperty = ({result}) => {
+const GetProperty = ({data,setData}) => {
+  
     return (
         <div>
             {
-                result.map(res => console.log(res))
+                // result.map(res => <ShowProperty  result={result}/>)
+                <ShowProperty data={data}/>
             }
         </div>
     )
