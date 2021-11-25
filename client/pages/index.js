@@ -21,12 +21,13 @@ export const getStaticProps =  async ()=>{
 
 export default function Home({result}) {
   const[data , setData] = useState(result)
+  const [search,setSearchResult] = useState(result)
   return (
    <>
      <div className={styles.container}>
       {PageTitle('Home')}
     </div>
-   <Property data={data} setData={setData}/> 
+   <Property search={search} setSearchResult={setSearchResult} data={data} setData={setData}/> 
    </>
   )
 }

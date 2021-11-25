@@ -6,17 +6,18 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import ShowProperty from '../ShowProperty/ShowProperty';
-const Property = ({data}) => {
-    console.log(data)
-    const [search,setSearchResult] = useState('');
-
+import Link from 'next/link';
+const Property = ({data,setData,search,setSearchResult}) => {
+    const [editValue,setEditValue] = useState('');
     const handleSearchInput =(e)=>{
         const searchText = e.target.value;
         const matched = data?.filter(res => res.name.toLowerCase().includes(searchText.toLowerCase()))
-        setSearchResult(matched)
+        setSearchResult(matched);
     }
     console.log(search)
+    const handleEditButton = (id)=>{
+        console.log(id)
+    }
     return (
         <>
            <Container>
@@ -31,7 +32,9 @@ const Property = ({data}) => {
                     </InputGroup>
                    </Col>
                     <Col xs={1} md={5}>
-                        <Button variant="primary">Add Property</Button>
+                        <Link href='/addproperty'>
+                            <Button variant="primary">Add Property</Button>
+                        </Link>
                     </Col>
                </Row>
                <Table striped bordered hover variant="dark">
@@ -46,14 +49,14 @@ const Property = ({data}) => {
             </thead>
             <tbody>
                 {
-                    search?.map(res=>{
+                   search?.map(res=>{
                         return <tr key={res.id}>
                             <td>{res.id}</td>
                             <td>{res.propertyname}</td>
                             <td>{res.name}</td>
                             <td>{res.location}</td>
                             <td>
-                                <Button>Edit</Button>
+                                <Button onClick={()=>{handleEditButton(res.id)}}>Edit</Button>
                                 <Button className='mx-3'>Delete</Button>
                             </td>
                             </tr>
