@@ -4,9 +4,13 @@ import { sqlQuery } from "../../lib/db";
 
 const handler = async (req,res)=>{
     try{
-
-        const result = await sqlQuery("SELECT * FROM property_list")
-        return res.json(result)
+        if(req.method === 'POST'){
+            res.json({message:'comming soon'})
+        }else if(req.method === 'GET'){
+            const result = await sqlQuery("SELECT * FROM property_list")
+            return res.json(result)
+        }
+       
 
     }catch(e){
         res.status(500).json({message:e.message})

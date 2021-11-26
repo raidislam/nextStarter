@@ -1,6 +1,4 @@
 // Require and initialize outside of your main handler
-
-// Require and initialize outside of your main handler
 const mysql = require('serverless-mysql')({
   config: {
     host: "localhost",
